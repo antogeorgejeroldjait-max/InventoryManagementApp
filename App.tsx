@@ -1,20 +1,55 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { HomeScreen } from './src/screens/HomeScreen';
+import { CartDetailsScreen } from './src/screens/CartDetailsScreen';
+import { StockGraphScreen } from './src/screens/StockGraphScreen';
+import { PaymentScreen } from './src/screens/PaymentScreen';
+
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+          animation: 'slide_from_right',
+        }}
+      >
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            title: 'Stock Market',
+          }}
+        />
+        <Stack.Screen
+          name="CartDetails"
+          component={CartDetailsScreen}
+          options={{
+            title: 'Stock Details',
+            animation: 'fade', // ✅ instead of animationEnabled
+          }}
+        />
+        <Stack.Screen
+          name="StockGraph"
+          component={StockGraphScreen}
+          options={{
+            title: 'Stock Graph',
+            animation: 'slide_from_bottom', // ✅ another valid animation
+          }}
+        />
+        <Stack.Screen
+          name="Payment"
+          component={PaymentScreen}
+          options={{
+            title: 'Payment',
+            animation: 'slide_from_bottom',
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
