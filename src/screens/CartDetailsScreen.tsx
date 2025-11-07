@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f3f4f6',
     paddingHorizontal: 16,
+    marginTop: StatusBar.currentHeight || 0,
   },
   backButton: {
     paddingVertical: 12,
@@ -114,7 +115,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   largeImage: {
-    width: 220,
+    width: 340,
     height: 220,
     borderRadius: 12,
   },

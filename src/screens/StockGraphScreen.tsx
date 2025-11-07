@@ -9,6 +9,8 @@ import {
   Dimensions,
 } from 'react-native';
 import { Stock } from '../types/stock';
+import Svg, { Polyline } from 'react-native-svg';
+
 
 interface Props {
   navigation: any;
@@ -87,19 +89,20 @@ export const StockGraphScreen: React.FC<Props> = ({ navigation, route }) => {
         </View>
 
         <View style={styles.chartWrapper}>
-          <svg
-            width={chartWidth}
-            height={chartHeight}
-            style={styles.svg}
-            viewBox={`0 0 ${chartWidth} ${chartHeight}`}
-          >
-            <polyline
-              points={points}
-              fill="none"
-              stroke="#3b82f6"
-              strokeWidth="2"
-            />
-          </svg>
+          <Svg
+  width={chartWidth}
+  height={chartHeight}
+  style={styles.svg}
+  viewBox={`0 0 ${chartWidth} ${chartHeight}`}
+>
+  <Polyline
+    points={points}
+    fill="none"
+    stroke="#f63b5dff"
+    strokeWidth="2"
+  />
+</Svg>
+
         </View>
       </View>
 
@@ -122,7 +125,7 @@ export const StockGraphScreen: React.FC<Props> = ({ navigation, route }) => {
       {/* Back to Home Button */}
       <TouchableOpacity
         style={styles.homeButton}
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('HomeScreen')}
       >
         <Text style={styles.homeButtonText}>Back to Home</Text>
       </TouchableOpacity>
@@ -143,6 +146,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderBottomColor: '#e5e7eb',
+    marginTop: StatusBar.currentHeight || 0,
   },
   backButton: {
     marginRight: 12,
@@ -150,7 +154,7 @@ const styles = StyleSheet.create({
   backButtonText: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#3b82f6',
+    color: '#cd0101ff',
   },
   headerTitle: {
     fontSize: 18,
@@ -185,12 +189,13 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   chartWrapper: {
-    height: 300,
+    height: 20,
     justifyContent: 'center',
   },
   svg: {
     width: '100%',
     height: '100%',
+    marginLeft: 20,
   },
   statsContainer: {
     flexDirection: 'row',
@@ -201,7 +206,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 12,
     borderRadius: 12,
-    shadowColor: '#000',
+    shadowColor: '#80b1f6ff',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 3.84,

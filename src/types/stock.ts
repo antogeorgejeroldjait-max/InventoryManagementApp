@@ -4,5 +4,17 @@ export interface Stock {
   company: string;
   price: number;
   change: number;
-  image: any; // local image require
+  image: any;
 }
+
+export interface Product {
+  id: string;
+  name: string;
+  company: string;
+  Price: number;
+  percentage: number;
+  image: string;
+  createdAt: string;
+}
+
+export type UserRole = 'user' | 'admin';
